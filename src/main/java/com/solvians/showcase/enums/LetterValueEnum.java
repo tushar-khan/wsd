@@ -1,29 +1,23 @@
-package com.solvians.showcase;
+package com.solvians.showcase.enums;
 
-import java.time.LocalDate;
-import java.util.concurrent.ThreadLocalRandom;
+public enum LetterValueEnum {
+    A(10), B(11), C(12), D(13), E(14), F(15),
+    G(16), H(17), I(18), J(19), K(20), L(21),
+    M(22), N(23), O(24), P(25), Q(26), R(27),
+    S(28), T(29), U(30), V(31), W(32), X(33),
+    Y(34), Z(35);
 
-public class CertificateUpdate {
-    private long timestamp;
-    private String isin;
-    private double bidPrice;
-    private int bidSize;
-    private double askPrice;
-    private int askSize;
-    private LocalDate maturityDate;
+    private final int value;
 
-    public CertificateUpdate(long timestamp, String isin, double bidPrice, int bidSize, double askPrice, int askSize, LocalDate maturityDate) {
-        this.timestamp = timestamp;
-        this.isin = isin;
-        this.bidPrice = bidPrice;
-        this.bidSize = bidSize;
-        this.askPrice = askPrice;
-        this.askSize = askSize;
-        this.maturityDate = maturityDate;
+    LetterValueEnum(int value) {
+        this.value = value;
     }
 
-    @Override
-    public String toString() {
-        return timestamp + "," + isin + "," + bidPrice + "," + bidSize + "," + askPrice + "," + askSize + "," + maturityDate;
+    public int getValue() {
+        return value;
+    }
+
+    public static int getValueByLetter(char letter) {
+        return LetterValueEnum.valueOf(String.valueOf(letter).toUpperCase()).getValue();
     }
 }
